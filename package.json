@@ -4,7 +4,7 @@
   "description": "Frontend for Finrie",
   "main": "index.js",
   "scripts": {
-    "start": "parcel index.html",
+    "start": "parcel",
     "build": "parcel build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,6 +16,8 @@
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.11.1",
+    "styled-components": "^6.0.0-rc.1"
   }
 }
