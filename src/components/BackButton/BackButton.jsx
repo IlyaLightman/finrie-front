@@ -1,7 +1,7 @@
 import React from 'react'
 
-import Button from '../Button/Button'
+import RedirectButton from '../RedirectButton/RedirectButton'
 
-const BackButton = () => <Button title='Back' />
+const BackButton = () => <RedirectButton title='Back' path='/' />
 
 export default BackButton

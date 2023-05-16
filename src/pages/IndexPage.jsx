@@ -1,17 +1,14 @@
 import React from 'react'
 
-import Button from '../components/Button/Button'
-import Input from '../components/Input/Input'
+import RedirectButton from '../components/RedirectButton/RedirectButton'
 
 const IndexPage = () => (
 	<>
 		<p>Welcome to Finrie!</p>
-		<Input title='Username' value='Hello' />
-		<Input title='Value' value='1000' />
-		<Button title='Click me!' />
-		<Button title='Click me!' />
-		<Button title='Click me!' />
-		<Button title='Click me!' />
+		<RedirectButton title='Register System' path='/register_system' />
+		<RedirectButton title='Login as System' path='/login_system' />
+		<RedirectButton title='Register User' path='/register_user' />
+		<RedirectButton title='Login as User' path='/login_user' />
 	</>
 )
 
