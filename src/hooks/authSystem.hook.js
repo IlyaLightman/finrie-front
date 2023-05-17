@@ -77,6 +77,7 @@ const useSystemAuth = () => {
 	const clearError = useCallback(() => setError(null))
 
 	return {
+		setSystemContext,
 		registerSystem,
 		loginSystem,
 		logoutSystem,

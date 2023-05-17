@@ -8,8 +8,8 @@ import useSetUser from './hooks/useSetUser'
 import UserContext from './hooks/UserContext'
 
 import { AppPage } from './App.style'
-
 import IndexPage from './pages/IndexPage'
+
 import SystemRegisterPage from './pages/SystemRegisterPage'
 import SystemLoginPage from './pages/SystemLoginPage'
 import SystemHomePage from './pages/SystemHomePage'
@@ -17,6 +17,7 @@ import SystemInfoPage from './pages/SystemInfoPage'
 
 import UserRegisterPage from './pages/UserRegisterPage'
 import UserLoginPage from './pages/UserLoginPage'
+import UserHomePage from './pages/UserHomePage'
 
 const router = createBrowserRouter([
 	{
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
 	{
 		path: '/login_user',
 		element: <UserLoginPage />
+	},
+	{
+		path: '/user_home',
+		element: <UserHomePage />
 	}
 ])
 

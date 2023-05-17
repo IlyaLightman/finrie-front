@@ -9,7 +9,7 @@ import RedirectButton from '../components/RedirectButton/RedirectButton'
 
 const SystemHomePage = () => {
 	const { user } = useContext(UserContext)
-	const { logoutSystem } = useSystemAuth()
+	const { setSystemContext, logoutSystem } = useSystemAuth()
 
 	const [freeIssuance, setFreeIssuance] = useState(0)
 
@@ -27,7 +27,8 @@ const SystemHomePage = () => {
 			await getFreeIssuance()
 		}
 		asyncGetFreeIssuance()
-	})
+		setSystemContext()
+	}, [])
 
 	return (
 		<>

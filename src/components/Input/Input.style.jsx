@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const InputStyle = styled.input`
-	width: 380px;
+	width: 420px;
 	height: 32px;
 	border: 0px solid black;
 	background: ${({ invalid }) => (!invalid ? 'rgba(0, 0, 0, .06)' : 'rgba(255, 0, 0, 0.1)')};
@@ -14,7 +14,7 @@ export const InputStyle = styled.input`
 `
 
 export const SelectStyle = styled.select`
-	width: 380px;
+	width: 420px;
 	height: 32px;
 	border: 0px solid black;
 	background: rgba(0, 0, 0, 0.06);
@@ -27,7 +27,7 @@ export const SelectStyle = styled.select`
 `
 
 export const InputTitleStyle = styled.p`
-	width: 160px;
+	width: 220px;
 	padding-right: 6px;
 `
 
