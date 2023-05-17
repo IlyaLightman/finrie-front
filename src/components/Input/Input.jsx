@@ -3,10 +3,10 @@ import { InputStyle, SelectStyle, InputWrapperStyle, InputTitleStyle } from './I
 
 const Input = ({ onChange, value, title, select, invalid }) => {
 	return (
-		<InputWrapperStyle isInvalid={!!invalid}>
+		<InputWrapperStyle invalid={invalid}>
 			<InputTitleStyle>{title}:</InputTitleStyle>
 			{!select ? (
-				<InputStyle onChange={onChange} value={value} isInvalid={!!invalid} />
+				<InputStyle onChange={onChange} value={value || ''} invalid={!!invalid} />
 			) : (
 				<SelectStyle onChange={onChange}>
 					{select.map((item, ind) => (

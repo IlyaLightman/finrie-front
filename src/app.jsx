@@ -8,9 +8,13 @@ import useSetUser from './hooks/useSetUser'
 import UserContext from './hooks/UserContext'
 
 import { AppPage } from './App.style'
+
 import IndexPage from './pages/IndexPage'
 import SystemRegisterPage from './pages/SystemRegisterPage'
 import SystemLoginPage from './pages/SystemLoginPage'
+import SystemHomePage from './pages/SystemHomePage'
+import SystemInfoPage from './pages/SystemInfoPage'
+
 import UserRegisterPage from './pages/UserRegisterPage'
 import UserLoginPage from './pages/UserLoginPage'
 
@@ -28,6 +32,14 @@ const router = createBrowserRouter([
 		element: <SystemLoginPage />
 	},
 	{
+		path: '/system_home',
+		element: <SystemHomePage />
+	},
+	{
+		path: '/system_info',
+		element: <SystemInfoPage />
+	},
+	{
 		path: '/register_user',
 		element: <UserRegisterPage />
 	},
@@ -38,7 +50,8 @@ const router = createBrowserRouter([
 ])
 
 const App = () => {
-	const { user, setUser } = useSetUser()
+	const { user, setUser } = useSetUser(null)
+	console.log('app', user)
 
 	return (
 		<UserContext.Provider value={{ user, setUser }}>

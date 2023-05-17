@@ -19,7 +19,7 @@ const useSystemAuth = () => {
 			})
 
 			setUser({ role: 'system', ...res.data })
-			navigate('/')
+			navigate('/system_home')
 		} catch (err) {
 			console.log(err)
 			setError(err.message)
@@ -62,7 +62,7 @@ const useSystemAuth = () => {
 			await setSystemContext()
 		} catch (err) {
 			console.log(err)
-			setError(err.message)
+			setError(err.response?.data?.message || err.response?.data?.error || err.message)
 		}
 
 		setLoading(false)
@@ -71,6 +71,7 @@ const useSystemAuth = () => {
 	const logoutSystem = useCallback(() => {
 		localStorage.removeItem('access_token')
 		setUser(null)
+		navigate('/')
 	})
 
 	const clearError = useCallback(() => setError(null))

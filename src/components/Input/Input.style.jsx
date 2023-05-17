@@ -4,13 +4,12 @@ export const InputStyle = styled.input`
 	width: 380px;
 	height: 32px;
 	border: 0px solid black;
-	background: ${({ isInvalid }) => (!isInvalid ? 'rgba(0, 0, 0, .06)' : 'rgba(255, 0, 0, 0.1)')};
+	background: ${({ invalid }) => (!invalid ? 'rgba(0, 0, 0, .06)' : 'rgba(255, 0, 0, 0.1)')};
 	border-radius: 10px;
 	padding: 4px 0 4px 12px;
 
 	&:hover {
-		background: ${({ isInvalid }) =>
-			!isInvalid ? 'rgba(0, 0, 0, .12)' : 'rgba(175, 0, 0, 0.15)'};
+		background: ${({ invalid }) => (!invalid ? 'rgba(0, 0, 0, .12)' : 'rgba(175, 0, 0, 0.15)')};
 	}
 `
 
@@ -40,5 +39,5 @@ export const InputWrapperStyle = styled.div`
 	width: 90%;
 	margin-top: 4px;
 
-	color: ${({ isInvalid }) => (!isInvalid ? 'black' : 'rgba(200, 0, 0, 0.6)')};
+	color: ${({ invalid }) => (!invalid ? 'black' : 'rgba(200, 0, 0, 0.6)')};
 `
