@@ -4,6 +4,9 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Header from './components/Header/header'
 import Container from './containers/Container/Container'
 
+import useSetUser from './hooks/useSetUser'
+import UserContext from './hooks/UserContext'
+
 import { AppPage } from './App.style'
 import IndexPage from './pages/IndexPage'
 import SystemRegisterPage from './pages/SystemRegisterPage'
@@ -34,15 +37,19 @@ const router = createBrowserRouter([
 	}
 ])
 
-const App = () => (
-	<div>
-		<Header />
-		<AppPage>
-			<Container>
-				<RouterProvider router={router} />
-			</Container>
-		</AppPage>
-	</div>
-)
+const App = () => {
+	const { user, setUser } = useSetUser()
+
+	return (
+		<UserContext.Provider value={{ user, setUser }}>
+			<Header />
+			<AppPage>
+				<Container>
+					<RouterProvider router={router} />
+				</Container>
+			</AppPage>
+		</UserContext.Provider>
+	)
+}
 
 export default App
