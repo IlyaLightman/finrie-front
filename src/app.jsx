@@ -1,11 +1,12 @@
 import React from 'react'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import Header from './components/Header/header'
 import Container from './containers/Container/Container'
 
 import useSetUser from './hooks/useSetUser'
 import UserContext from './hooks/UserContext'
+import GuardRoute from './guards/GuardRoute'
 
 import { AppPage } from './App.style'
 import IndexPage from './pages/IndexPage'
@@ -19,41 +20,6 @@ import UserRegisterPage from './pages/UserRegisterPage'
 import UserLoginPage from './pages/UserLoginPage'
 import UserHomePage from './pages/UserHomePage'
 
-const router = createBrowserRouter([
-	{
-		path: '/',
-		element: <IndexPage />
-	},
-	{
-		path: '/register_system',
-		element: <SystemRegisterPage />
-	},
-	{
-		path: '/login_system',
-		element: <SystemLoginPage />
-	},
-	{
-		path: '/system_home',
-		element: <SystemHomePage />
-	},
-	{
-		path: '/system_info',
-		element: <SystemInfoPage />
-	},
-	{
-		path: '/register_user',
-		element: <UserRegisterPage />
-	},
-	{
-		path: '/login_user',
-		element: <UserLoginPage />
-	},
-	{
-		path: '/user_home',
-		element: <UserHomePage />
-	}
-])
-
 const App = () => {
 	const { user, setUser } = useSetUser(null)
 	console.log('app', user)
@@ -63,7 +29,32 @@ const App = () => {
 			<Header />
 			<AppPage>
 				<Container>
-					<RouterProvider router={router} />
+					<BrowserRouter>
+						<Routes>
+							<Route path='/' element={<IndexPage />} />
+							<Route path='/register_system' element={<SystemRegisterPage />} />
+							<Route path='/login_system' element={<SystemLoginPage />} />
+							<Route
+								path='system_home'
+								element={
+									<GuardRoute role='system'>
+										<SystemHomePage />
+									</GuardRoute>
+								}
+							/>
+							<Route path='/system_info' element={<SystemInfoPage />} />
+							<Route path='/register_user' element={<UserRegisterPage />} />
+							<Route path='/login_user' element={<UserLoginPage />} />
+							<Route
+								path='/user_home'
+								element={
+									<GuardRoute role='user'>
+										<UserHomePage />
+									</GuardRoute>
+								}
+							/>
+						</Routes>
+					</BrowserRouter>
 				</Container>
 			</AppPage>
 		</UserContext.Provider>

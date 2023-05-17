@@ -6,6 +6,8 @@ import BackButton from '../components/BackButton/BackButton'
 const SystemInfoPage = () => {
 	const { user } = useContext(UserContext)
 
+	// todo: get system by query. it let to get system info from user
+
 	return (
 		<>
 			<p>

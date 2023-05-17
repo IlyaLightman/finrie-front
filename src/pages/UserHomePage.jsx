@@ -31,9 +31,10 @@ const UserHomePage = () => {
 
 	return (
 		<>
-			<p style={{ color: 'gray' }}>System {user && <b>{user.system_name}</b>}</p>
+			<p>System {user && <b>{user.system_name}</b>}</p>
 			<p>User {user && <b>{user.name}</b>} Home Page</p>
 			<p>Balance: {balance}</p>
+			<Button title='System info' />
 			<Button title='Send coins' />
 			<Button title='My transactions' />
 			<Button title='Logout' onClick={async () => await logoutUser()} />
