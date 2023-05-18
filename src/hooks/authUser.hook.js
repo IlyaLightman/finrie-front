@@ -57,6 +57,7 @@ const useUserAuth = () => {
 				password
 			})
 			localStorage.setItem('access_token', access_token.data.accessToken)
+			localStorage.setItem('role', 'user')
 			await setUserContext()
 		} catch (err) {
 			console.log(err)
@@ -68,6 +69,7 @@ const useUserAuth = () => {
 
 	const logoutUser = useCallback(() => {
 		localStorage.removeItem('access_token')
+		localStorage.removeItem('role')
 		setUser(null)
 		navigate('/')
 	})

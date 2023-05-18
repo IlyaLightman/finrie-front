@@ -15,6 +15,7 @@ import SystemRegisterPage from './pages/SystemRegisterPage'
 import SystemLoginPage from './pages/SystemLoginPage'
 import SystemHomePage from './pages/SystemHomePage'
 import SystemInfoPage from './pages/SystemInfoPage'
+import SystemMembersPage from './pages/SystemMembersPage'
 
 import UserRegisterPage from './pages/UserRegisterPage'
 import UserLoginPage from './pages/UserLoginPage'
@@ -22,7 +23,6 @@ import UserHomePage from './pages/UserHomePage'
 
 const App = () => {
 	const { user, setUser } = useSetUser(null)
-	console.log('app', user)
 
 	return (
 		<UserContext.Provider value={{ user, setUser }}>
@@ -43,6 +43,15 @@ const App = () => {
 								}
 							/>
 							<Route path='/system_info' element={<SystemInfoPage />} />
+							<Route
+								path='/system_members'
+								element={
+									<GuardRoute role='system'>
+										<SystemMembersPage />
+									</GuardRoute>
+								}
+							/>
+
 							<Route path='/register_user' element={<UserRegisterPage />} />
 							<Route path='/login_user' element={<UserLoginPage />} />
 							<Route

@@ -37,7 +37,7 @@ const SystemHomePage = () => {
 			<RedirectButton title='System info' path='/system_info' />
 			<Button title='Send coins to user' />
 			<Button title='Distribute coins' />
-			<Button title='Members' />
+			<RedirectButton title='Members' path='/system_members' />
 			<Button title='Logout' onClick={async () => await logoutSystem()} />
 		</>
 	)

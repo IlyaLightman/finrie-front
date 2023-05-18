@@ -5,6 +5,7 @@ import UserContext from '../hooks/UserContext'
 import useUserAuth from '../hooks/authUser.hook'
 
 import Button from '../components/Button/Button'
+import RedirectButton from '../components/RedirectButton/RedirectButton'
 
 const UserHomePage = () => {
 	const { user } = useContext(UserContext)
@@ -34,7 +35,7 @@ const UserHomePage = () => {
 			<p>System {user && <b>{user.system_name}</b>}</p>
 			<p>User {user && <b>{user.name}</b>} Home Page</p>
 			<p>Balance: {balance}</p>
-			<Button title='System info' />
+			<RedirectButton title='System info' path='/system_info' />
 			<Button title='Send coins' />
 			<Button title='My transactions' />
 			<Button title='Logout' onClick={async () => await logoutUser()} />
