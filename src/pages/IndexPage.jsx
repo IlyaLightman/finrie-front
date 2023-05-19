@@ -12,7 +12,6 @@ const IndexPage = () => {
 
 	useEffect(() => {
 		const role = localStorage.getItem('role')
-		console.log('role', role)
 
 		const setContext = async () => {
 			if (role && role === 'system') await setSystemContext()

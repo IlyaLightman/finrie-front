@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Header from './components/Header/header'
 import Container from './containers/Container/Container'
 
-import useSetUser from './hooks/useSetUser'
+import useSetUser from './hooks/setUser.hook'
 import UserContext from './hooks/UserContext'
 import GuardRoute from './guards/GuardRoute'
 
@@ -20,6 +20,8 @@ import SystemMembersPage from './pages/SystemMembersPage'
 import UserRegisterPage from './pages/UserRegisterPage'
 import UserLoginPage from './pages/UserLoginPage'
 import UserHomePage from './pages/UserHomePage'
+
+import TransactionPage from './pages/TransactionPage'
 
 const App = () => {
 	const { user, setUser } = useSetUser(null)
@@ -59,6 +61,15 @@ const App = () => {
 								element={
 									<GuardRoute role='user'>
 										<UserHomePage />
+									</GuardRoute>
+								}
+							/>
+
+							<Route
+								path='/transaction'
+								element={
+									<GuardRoute role='*'>
+										<TransactionPage />
 									</GuardRoute>
 								}
 							/>

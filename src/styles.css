@@ -6,3 +6,7 @@ body {
     background: #f7f8fc;
     font-family: 'Roboto', sans-serif;
 }
+
+b {
+    color: rgb(255, 145, 94);
+}

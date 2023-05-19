@@ -32,10 +32,10 @@ const SystemHomePage = () => {
 
 	return (
 		<>
-			<p>System {user && <b>{user.name}</b>} Home Page</p>
+			<p>System {user && <b>{user.name}</b>} Homepage</p>
 			<p>Free issuance: {freeIssuance}</p>
 			<RedirectButton title='System info' path='/system_info' />
-			<Button title='Send coins to user' />
+			<RedirectButton title='Send coins to user' path='/transaction' />
 			<Button title='Distribute coins' />
 			<RedirectButton title='Members' path='/system_members' />
 			<Button title='Logout' onClick={async () => await logoutSystem()} />

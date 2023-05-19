@@ -6,7 +6,7 @@ import UserContext from '../hooks/UserContext'
 const GuardRoute = ({ role, children }) => {
 	const { user } = React.useContext(UserContext)
 
-	if (user?.role === role) {
+	if (user?.role === role || (user?.role && role === '*')) {
 		return children
 	} else {
 		return <Navigate to='/' />
