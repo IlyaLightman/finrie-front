@@ -9,6 +9,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Ilya Zaytsev",
+  "repository": "https://github.com/IlyaLightman/finrie-front",
   "license": "ISC",
   "devDependencies": {
     "buffer": "^5.7.1",
