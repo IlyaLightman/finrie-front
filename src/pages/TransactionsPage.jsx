@@ -11,11 +11,11 @@ const TransactionItem = ({ value, form, created_at }) => {
 
 	return (
 		<>
-			<p style={{ color: isDeposit ? 'green' : red }}>
+			<p style={{ color: isDeposit ? 'green' : 'red' }}>
 				{isDeposit ? '+' : '-'}
 				{value}
 			</p>
-			<p>{dayjs(created_at).format('MMM D, YYYY HH:mm')}</p>
+			<p>{dayjs(created_at).format('DD.MM.YYYY HH:mm:ss')}</p>
 		</>
 	)
 }

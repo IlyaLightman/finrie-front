@@ -16,8 +16,4 @@ export const ContainerStyle = styled.div`
 	&:hover {
 		box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 6px;
 	}
-
-	@media (max-width: 640px) {
-		width: 80%;
-	}
 `

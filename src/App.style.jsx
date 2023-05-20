@@ -5,5 +5,5 @@ export const AppPage = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-top: 32px;
+	margin: 32px 0 32px 0;
 `
