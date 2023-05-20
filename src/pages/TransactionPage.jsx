@@ -8,6 +8,7 @@ import useTransaction from '../hooks/transaction.hook'
 const TransactionPage = () => {
 	const [username, setUsername] = useState()
 	const [value, setValue] = useState()
+	const [res, setRes] = useState()
 
 	const { sendCoins, transactionError, clearTransactionError } = useTransaction()
 
@@ -16,16 +17,23 @@ const TransactionPage = () => {
 	}, [username, value])
 
 	const sendCoinsHandler = useCallback(async () => {
-		await sendCoins(username, value)
+		const response = await sendCoins(username, value)
+		if (response.pool_transaction_id) setRes('Transaction successfully sent')
 	})
 
 	return (
 		<>
 			<p>Send coins</p>
-			{transactionError && <p style={{ color: 'red' }}>{transactionError}</p>}
-			<Input title='Username' value={username} onChange={e => setUsername(e.target.value)} />
-			<Input title='Value' value={value} onChange={e => setValue(e.target.value)} />
-			<Button title='Send' onClick={sendCoinsHandler} />
+			{res ? (
+				<p style={{ color: 'green' }}>{res}</p>
+			) : (
+				<>
+					{transactionError && <p style={{ color: 'red' }}>{transactionError}</p>}
+					<Input title='Username' value={username} onChange={e => setUsername(e.target.value)} />
+					<Input title='Value' value={value} onChange={e => setValue(e.target.value)} />
+					<Button title='Send' onClick={sendCoinsHandler} />
+				</>
+			)}
 			<BackButton />
 		</>
 	)
