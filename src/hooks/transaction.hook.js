@@ -7,8 +7,14 @@ const useTransaction = () => {
 
 	const sendCoins = useCallback(async (username, value) => {
 		try {
+			const user_response = await axios.get(`/user/${username}?findBy=name`)
+			if (!user_response.data) {
+				setTransactionError('User not found')
+				return
+			}
+
 			const response = await axios.post('/pool_tx', {
-				receiver_user_name: username,
+				receiver_user_id: user_response.data.user_id,
 				value
 			})
 			return response.data
