@@ -6,15 +6,18 @@ import axios from '../utils/axios'
 import List from '../containers/List/List'
 import BackButton from '../components/BackButton/BackButton'
 
-const TransactionItem = ({ value, form, created_at }) => {
+const TransactionItem = ({ value, form, receiver_name, sender_name, created_at }) => {
 	const isDeposit = form === 'deposit'
 
 	return (
 		<>
-			<p style={{ color: isDeposit ? 'green' : 'red' }}>
-				{isDeposit ? '+' : '-'}
-				{value}
-			</p>
+			<div style={{ width: '50%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+				<p style={{ color: isDeposit ? 'green' : 'red' }}>
+					{isDeposit ? '+' : '-'}
+					{value}
+				</p>
+				<b>{isDeposit ? receiver_name : sender_name}</b>
+			</div>
 			<p>{dayjs(created_at).format('DD.MM.YYYY HH:mm:ss')}</p>
 		</>
 	)
