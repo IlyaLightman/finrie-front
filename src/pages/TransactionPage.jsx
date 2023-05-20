@@ -18,7 +18,7 @@ const TransactionPage = () => {
 
 	const sendCoinsHandler = useCallback(async () => {
 		const response = await sendCoins(username, value)
-		if (response.pool_transaction_id) setRes('Transaction successfully sent')
+		if (response) setRes('Coins successfully sent')
 	})
 
 	return (

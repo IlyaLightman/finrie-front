@@ -22,6 +22,7 @@ import UserLoginPage from './pages/UserLoginPage'
 import UserHomePage from './pages/UserHomePage'
 
 import TransactionPage from './pages/TransactionPage'
+import TransactionsPage from './pages/TransactionsPage'
 
 const App = () => {
 	const { user, setUser } = useSetUser(null)
@@ -70,6 +71,14 @@ const App = () => {
 								element={
 									<GuardRoute role='*'>
 										<TransactionPage />
+									</GuardRoute>
+								}
+							/>
+							<Route
+								path='/transactions'
+								element={
+									<GuardRoute role='user'>
+										<TransactionsPage />
 									</GuardRoute>
 								}
 							/>
