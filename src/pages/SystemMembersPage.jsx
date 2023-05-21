@@ -38,7 +38,7 @@ const SystemMembersPage = () => {
 		<>
 			<p>System {user && <b>{user.name}</b>} Members</p>
 			{members ? (
-				<List rows={members} Component={MemberItem} columns={['Name', 'Registered at']} />
+				<List rows={members} Component={MemberItem} columns={['Name', 'Registered at']} rowsPerPage={5} />
 			) : (
 				<p>There aren't members yet</p>
 			)}

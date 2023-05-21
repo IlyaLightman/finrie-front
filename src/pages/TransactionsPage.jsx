@@ -16,7 +16,7 @@ const TransactionItem = ({ value, form, receiver_name, sender_name, created_at }
 					{isDeposit ? '+' : '-'}
 					{value}
 				</p>
-				<b>{isDeposit ? receiver_name : sender_name}</b>
+				<b>{isDeposit ? sender_name : receiver_name}</b>
 			</div>
 			<p>{dayjs(created_at).format('DD.MM.YYYY HH:mm:ss')}</p>
 		</>
@@ -55,17 +55,17 @@ const TransactionsPage = () => {
 
 	return (
 		<>
-			<p>Transactions:</p>
-			{transactions?.length ? (
-				<List rows={transactions} Component={TransactionItem} />
-			) : (
-				<p style={{ color: 'gray' }}>There aren't transactions yet</p>
-			)}
 			<p>Unregistered Transactions:</p>
 			{poolTransactions?.length ? (
-				<List rows={poolTransactions} Component={TransactionItem} />
+				<List rows={poolTransactions} Component={TransactionItem} rowsPerPage={5} />
 			) : (
 				<p style={{ color: 'gray' }}>There aren't pool transactions yet</p>
+			)}
+			<p>Transactions:</p>
+			{transactions?.length ? (
+				<List rows={transactions} Component={TransactionItem} rowsPerPage={5} />
+			) : (
+				<p style={{ color: 'gray' }}>There aren't transactions yet</p>
 			)}
 			<BackButton />
 		</>

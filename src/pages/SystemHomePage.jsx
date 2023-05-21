@@ -36,7 +36,7 @@ const SystemHomePage = () => {
 			<p>Free issuance: {freeIssuance}</p>
 			<RedirectButton title='System info' path='/system_info' />
 			<RedirectButton title='Send coins to user' path='/transaction' />
-			<Button title='Distribute coins' />
+			{/* <Button title='Distribute coins' /> */}
 			<RedirectButton title='Members' path='/system_members' />
 			<Button title='Logout' onClick={async () => await logoutSystem()} />
 		</>
