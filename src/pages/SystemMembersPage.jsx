@@ -36,7 +36,9 @@ const SystemMembersPage = () => {
 
 	return (
 		<>
-			<p>System {user && <b>{user.name}</b>} Members</p>
+			<p>
+				System {user && <b>{user.name}</b>} Members ({members?.count || 0}):
+			</p>
 			{members ? (
 				<List rows={members} Component={MemberItem} columns={['Name', 'Registered at']} rowsPerPage={5} />
 			) : (

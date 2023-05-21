@@ -55,13 +55,13 @@ const TransactionsPage = () => {
 
 	return (
 		<>
-			<p>Unregistered Transactions:</p>
+			<p>Unregistered Transactions ({poolTransactions?.length || 0}):</p>
 			{poolTransactions?.length ? (
 				<List rows={poolTransactions} Component={TransactionItem} rowsPerPage={5} />
 			) : (
 				<p style={{ color: 'gray' }}>There aren't pool transactions yet</p>
 			)}
-			<p>Transactions:</p>
+			<p>Transactions ({transactions?.length || 0}):</p>
 			{transactions?.length ? (
 				<List rows={transactions} Component={TransactionItem} rowsPerPage={5} />
 			) : (
