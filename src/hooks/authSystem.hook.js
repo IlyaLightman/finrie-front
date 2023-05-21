@@ -28,21 +28,20 @@ const useSystemAuth = () => {
 
 	const registerSystem = useCallback(async data => {
 		setLoading(true)
-		const { name, password } = data
+		const { name, description, issuanceType, issuanceLimit, password } = data
 
 		console.log()
 		try {
 			info = await axios.post('/system', {
 				name,
-				description: 'Description',
+				description,
 				password,
-				issuance_restriction: 'limit',
-				issuance_current_limit: 1000,
-				issuance_rule: 'simple'
+				issuance_restriction: issuanceType,
+				issuance_current_limit: issuanceLimit
 			})
 			await loginSystem({ name, password })
 		} catch (err) {
-			console.log('err', err)
+			console.log(err)
 			setError(err.response?.data?.message || err.response?.data?.error || err.message)
 		}
 

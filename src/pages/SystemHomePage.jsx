@@ -12,11 +12,17 @@ const SystemHomePage = () => {
 	const { setSystemContext, logoutSystem } = useSystemAuth()
 
 	const [freeIssuance, setFreeIssuance] = useState(0)
+	const [unregisteredFreeIssuance, setUnregisteredFreeIssuance] = useState(null)
 
 	const getFreeIssuance = useCallback(async () => {
 		try {
-			const response = await axios.get('/system/issuance')
-			setFreeIssuance(response.data)
+			const freeIssuance = (await axios.get('/system/issuance')).data
+			const unregisteredFreeIssuance = (await axios.get('/system/unregisteredIssuance')).data
+
+			setFreeIssuance(freeIssuance)
+			if (freeIssuance != unregisteredFreeIssuance) {
+				setUnregisteredFreeIssuance(unregisteredFreeIssuance)
+			}
 		} catch (err) {
 			console.log(err)
 		}
@@ -33,7 +39,13 @@ const SystemHomePage = () => {
 	return (
 		<>
 			<p>System {user && <b>{user.name}</b>} Homepage</p>
-			<p>Free issuance: {freeIssuance}</p>
+			{freeIssuance !== -1 ? (
+				<p>
+					Free issuance: {freeIssuance} {unregisteredFreeIssuance && `(${unregisteredFreeIssuance})`}
+				</p>
+			) : (
+				<p>Unlimited issuance</p>
+			)}
 			<RedirectButton title='System info' path='/system_info' />
 			<RedirectButton title='Send coins to user' path='/transaction' />
 			{/* <Button title='Distribute coins' /> */}

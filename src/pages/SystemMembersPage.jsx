@@ -9,7 +9,7 @@ import BackButton from '../components/BackButton/BackButton'
 
 const MemberItem = ({ name, registered_at }) => (
 	<>
-		<p>{name}</p>
+		<b>{name}</b>
 		<p>{dayjs(registered_at).format('MMM D, YYYY HH:mm')}</p>
 	</>
 )
@@ -37,7 +37,7 @@ const SystemMembersPage = () => {
 	return (
 		<>
 			<p>
-				System {user && <b>{user.name}</b>} Members ({members?.count || 0}):
+				System {user && <b>{user.name}</b>} Members ({members?.length || 0}):
 			</p>
 			{members ? (
 				<List rows={members} Component={MemberItem} columns={['Name', 'Registered at']} rowsPerPage={5} />

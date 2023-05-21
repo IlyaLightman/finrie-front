@@ -20,7 +20,7 @@ const SystemLoginPage = () => {
 		<>
 			<p>Login as System</p>
 			{error && <p style={{ color: 'red' }}>{error}</p>}
-			{loading && <p>Loading...</p>}
+			{loading && <p>Loading....</p>}
 			<Input title='Name' value={name} onChange={e => setName(e.target.value)} />
 			<Input title='Password' value={password} onChange={e => setPassword(e.target.value)} />
 			<Button title='Login' onClick={async () => await loginSystem({ name, password })} />

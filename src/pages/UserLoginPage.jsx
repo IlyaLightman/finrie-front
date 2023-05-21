@@ -21,18 +21,11 @@ const UserLoginPage = () => {
 		<>
 			<p>Login as User</p>
 			{error && <p style={{ color: 'red' }}>{error}</p>}
-			{loading && <p>Loading...</p>}
-			<Input
-				title='System name'
-				value={system_name}
-				onChange={e => setSystemName(e.target.value)}
-			/>
+			{loading && <p>Loading....</p>}
+			<Input title='System name' value={system_name} onChange={e => setSystemName(e.target.value)} />
 			<Input title='Username' value={name} onChange={e => setUserName(e.target.value)} />
 			<Input title='Password' value={password} onChange={e => setPassword(e.target.value)} />
-			<Button
-				title='Login'
-				onClick={async () => await loginUser({ name, system_name, password })}
-			/>
+			<Button title='Login' onClick={async () => await loginUser({ name, system_name, password })} />
 			<BackButton />
 		</>
 	)

@@ -14,8 +14,8 @@ export const InputStyle = styled.input`
 `
 
 export const SelectStyle = styled.select`
-	width: 420px;
-	height: 32px;
+	width: 440px;
+	height: 40px;
 	border: 0px solid black;
 	background: rgba(0, 0, 0, 0.06);
 	border-radius: 10px;

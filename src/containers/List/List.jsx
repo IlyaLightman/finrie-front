@@ -28,7 +28,7 @@ const List = ({ rows, Component, columns, rowsPerPage }) => {
 					))}
 			</ListStyle>
 
-			{page !== pages - 1 && <Button title='Next page' onClick={() => setPage(page + 1)} />}
+			{page !== pages - 1 && pages !== 0 && <Button title='Next page' onClick={() => setPage(page + 1)} />}
 			{page !== 0 && <Button title='Previous page' onClick={() => setPage(page - 1)} />}
 		</>
 	)
