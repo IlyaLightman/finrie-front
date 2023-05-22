@@ -20,16 +20,30 @@ const SystemRegisterPage = () => {
 	const [issuanceLimit, setIssuanceLimit] = useState()
 	const [password, setPassword] = useState()
 
+	const [invalids, setInvalids] = useState({ name: false, password: false })
+
 	useEffect(() => {
 		clearError()
-	}, [name, password])
+		if (name) {
+			if (name.length >= 4) setInvalids({ ...invalids, name: false })
+			else setInvalids({ ...invalids, name: true })
+		}
+	}, [name])
+
+	useEffect(() => {
+		clearError()
+		if (password) {
+			if (password.length >= 4) setInvalids({ ...invalids, password: false })
+			else setInvalids({ ...invalids, password: true })
+		}
+	}, [password])
 
 	return (
 		<>
 			<p>Register as System</p>
 			{error && <p style={{ color: 'red' }}>{error}</p>}
 			{loading && <p>Loading....</p>}
-			<Input title='Name' value={name} onChange={e => setName(e.target.value)} />
+			<Input title='Name' value={name} onChange={e => setName(e.target.value)} invalid={invalids.name} />
 			<Input title='Description' value={description} onChange={e => setDescription(e.target.value)} />
 			<Input
 				title='Issuance type'
@@ -40,10 +54,11 @@ const SystemRegisterPage = () => {
 			{issuanceType === 'limit' && (
 				<Input title='Issuance limit' value={issuanceLimit} onChange={e => setIssuanceLimit(e.target.value)} />
 			)}
-			<Input title='Password' value={password} onChange={e => setPassword(e.target.value)} />
+			<Input title='Password' value={password} onChange={e => setPassword(e.target.value)} invalid={invalids.password} />
 			<Button
 				title='Register'
 				onClick={async () => await registerSystem({ name, description, issuanceType, issuanceLimit, password })}
+				disabled={!name || !password || !description || Object.values(invalids).filter(Boolean).length > 0}
 			/>
 			<BackButton />
 		</>

@@ -6,7 +6,7 @@ export const ButtonStyle = styled.button`
 	align-items: center;
 	width: 240px;
 	height: 36px;
-	background: rgb(255, 145, 94);
+	background: ${({ disabled }) => (!disabled ? 'rgb(255, 145, 94)' : 'lightgray')};
 	border: 0px solid;
 	border-radius: 10px;
 	padding: 5px;
@@ -16,6 +16,6 @@ export const ButtonStyle = styled.button`
 
 	&:hover {
 		cursor: pointer;
-		background: rgb(255, 98, 114);
+		background: ${({ disabled }) => (!disabled ? 'rgb(255, 98, 114)' : 'lightgray')};
 	}
 `

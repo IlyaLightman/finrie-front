@@ -37,7 +37,7 @@ const useSystemAuth = () => {
 				description,
 				password,
 				issuance_restriction: issuanceType,
-				issuance_current_limit: issuanceLimit
+				issuance_current_limit: issuanceLimit || 0
 			})
 			await loginSystem({ name, password })
 		} catch (err) {
