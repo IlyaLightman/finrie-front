@@ -13,9 +13,23 @@ const UserRegisterPage = () => {
 	const [name, setUserName] = useState()
 	const [password, setPassword] = useState()
 
+	const [invalids, setInvalids] = useState({ name: false, password: false })
+
 	useEffect(() => {
 		clearError()
-	}, [name, system_name, password])
+		if (name) {
+			if (name.length >= 4) setInvalids({ ...invalids, name: false })
+			else setInvalids({ ...invalids, name: true })
+		}
+	}, [name])
+
+	useEffect(() => {
+		clearError()
+		if (password) {
+			if (password.length >= 4) setInvalids({ ...invalids, password: false })
+			else setInvalids({ ...invalids, password: true })
+		}
+	}, [password])
 
 	return (
 		<>
@@ -25,7 +39,11 @@ const UserRegisterPage = () => {
 			<Input title='System name' value={system_name} onChange={e => setSystemName(e.target.value)} />
 			<Input title='Username' value={name} onChange={e => setUserName(e.target.value)} />
 			<Input title='Password' value={password} onChange={e => setPassword(e.target.value)} />
-			<Button title='Register' onClick={async () => await registerUser({ name, system_name, password })} />
+			<Button
+				title='Register'
+				onClick={async () => await registerUser({ name, system_name, password })}
+				disabled={!name || !password || Object.values(invalids).filter(Boolean).length > 0}
+			/>
 			<BackButton />
 		</>
 	)
