@@ -7,3 +7,5 @@ In **Finrie**, it is possible to create 'local financial systems' in which users
 **Backend:** [GitHub repository](https://github.com/IlyaLightman/finrie-back)
 
 **Run in dev mode:** `npm run start`
+
+**Build prod:** `npm run build`
