@@ -54,10 +54,23 @@ const SystemRegisterPage = () => {
 			{issuanceType === 'limit' && (
 				<Input title='Issuance limit' value={issuanceLimit} onChange={e => setIssuanceLimit(e.target.value)} />
 			)}
-			<Input title='Password' value={password} onChange={e => setPassword(e.target.value)} invalid={invalids.password} />
+			<Input
+				title='Password'
+				value={password}
+				onChange={e => setPassword(e.target.value)}
+				invalid={invalids.password}
+			/>
 			<Button
 				title='Register'
-				onClick={async () => await registerSystem({ name, description, issuanceType, issuanceLimit, password })}
+				onClick={async () =>
+					await registerSystem({
+						name,
+						description,
+						issuance_restriction: issuanceType,
+						issuance_limit: issuanceLimit,
+						password
+					})
+				}
 				disabled={!name || !password || !description || Object.values(invalids).filter(Boolean).length > 0}
 			/>
 			<BackButton />
