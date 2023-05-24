@@ -67,7 +67,7 @@ const SystemRegisterPage = () => {
 						name,
 						description,
 						issuance_restriction: issuanceType,
-						issuance_limit: issuanceLimit,
+						issuance_current_limit: issuanceLimit,
 						password
 					})
 				}

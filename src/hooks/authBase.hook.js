@@ -32,7 +32,7 @@ const useAuth = role => {
 
 		try {
 			await axios.post(`/${role}`, data)
-			await loginSystem(data)
+			await login(data)
 		} catch (err) {
 			console.log(err)
 			setError(err.response?.data?.message || err.response?.data?.error || err.message)
