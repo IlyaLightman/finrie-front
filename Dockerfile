@@ -7,4 +7,5 @@ COPY nginx.conf /etc/nginx/conf.d
 
 EXPOSE 3000
 
+ENV BACKEND_URL=localhost:5000
 CMD ["nginx", "-g", "daemon off;"]
